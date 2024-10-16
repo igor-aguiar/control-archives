@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crie uma página que receba um texto e conte o número de vogais e consoantes.</title>
+</head>
+<body>
+    <label for="text">Digite na caixa um texto para contar as vogais e consoantes</label>
+    <textarea name="text" id="text"></textarea>
+    
+    <button type="submit" onclick="calcularLetras()">Calcular letras</button>
+
+    <table>
+        <tr>
+            <th>Consoantes</th>
+            <th>Vogais</th>
+        </tr>
+        <tr>
+            <td id="consoantes"></td>
+            <td id="vogais"></td>
+        </tr>
+    </table>
+
+    <script src="./script.js"></script>
+</body>
+</html>
