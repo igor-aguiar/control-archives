@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crie uma página que exiba os números pares e ímpares de 1 a N, onde N é inserido pelo usuário.</title>
+</head>
+<body>
+    <label for="number">Digite o numero para ver quais são pares e quais são impares até ele:</label>
+    <input type="text" name="number" id="number">
+
+    <button type="submit" onclick="verificaParesImpares()">Verificar</button>
+
+    <table id="resultado">
+        <tr id="pares">
+            <td>Pares</td>
+        </tr>
+        <tr id="impares">
+            <td>Impares</td>
+        </tr>
+    </table>
+
+    <script src="./script.js"></script>
+</body>
+</html>
