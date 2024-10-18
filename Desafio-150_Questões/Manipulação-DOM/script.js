@@ -279,3 +279,28 @@ function calcularOperacao(a, operador, b) {
         default: return 0;
     }
 }
+
+function registrarProduto(){
+    let produto = document.getElementById('produto').value;
+    let valor = document.getElementById('valor').value;
+
+    let listaProdutos = document.getElementById('lista-produtos');
+
+    let linha = document.createElement('tr');
+    let prodCol = document.createElement('td');
+    let valCol = document.createElement('td');
+
+    prodCol.textContent = produto;
+    valCol.textContent = valor;
+
+    linha.appendChild(prodCol);
+    linha.appendChild(valCol);
+    listaProdutos.appendChild(linha);
+
+    listaProdutos.childNodes
+    document.getElementById('total').textContent = calcularTotalNota(listaProdutos);
+}
+
+function calcularTotalNota(lista){
+    console.log(lista.rows[0].cells[1]);
+}

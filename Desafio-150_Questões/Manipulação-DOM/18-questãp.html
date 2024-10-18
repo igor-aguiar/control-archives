@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Crie uma página que receba uma lista de produtos e preços, calcule o total e aplique um desconto baseado em uma condição (por exemplo, desconto de 10% se o total for maior que 100).</title>
+</head>
+<body>
+    <label for="produtos">
+        Produto:
+        <input type="text" name="produto" id="produto">
+        Valor:
+        <input type="number" name="valor" id="valor" step="0.01">
+    </label>
+    <button onclick="registrarProduto()">Registrar</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Valor</th>
+            </tr>
+        </thead>
+        <tbody id="lista-produtos">
+
+        </tbody>
+    </table>
+
+    <p id="total"></p>
+
+    <script src="./script.js"></script>
+</body>
+</html>
