@@ -392,3 +392,44 @@ function verificarLogin() {
 
 
 }
+
+function calcularModaMedianaMedia(){
+    let moda = 0.0;
+    let media = 0.0;
+    let mediana = 0.0;
+
+    let numeros = document.getElementById('numeros').value.split(',').map(Number);
+
+    media = numeros.reduce((a, b) => a + b, 0)/numeros.length;
+    mediana = numeros.length % 2 != 0 ? numeros[Math.floor(numeros.length/2)] : (numeros[Math.floor(numeros.length/2)] + numeros[(numeros.length/2) - 1]) / 2;
+    moda = calcularModa(arr);
+
+    document.getElementById('moda').textContent = moda;
+    document.getElementById('media').textContent = media;
+    document.getElementById('mediana').textContent = mediana;
+}
+
+function calcularModa(numbers){
+    let frequencia = {};
+    let maxFreq = 0;
+    let modas = [];
+
+    numbers.forEach(num => {
+        frequencia[num] = (frequencia[num] || 0 ) + 1;
+        if (frequencia[num] > maxFreq) {
+            maxFreq = frequencia[num];
+        }
+    })
+
+    for (let num in frequencia) {
+        if (frequencia[num] === maxFreq) {
+            modas.push(Number(num))           
+        }
+    }
+
+    if (modas.length === numbers.length){
+        return "Não há moda";
+    }
+
+    return modas;
+}
