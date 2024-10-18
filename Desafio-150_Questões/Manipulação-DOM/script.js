@@ -230,43 +230,43 @@ function calcular() {
     let calculo = document.getElementById('calculo');
     let op = calculo.innerText.split('').filter(num => /[^0-9]/g.test(num))
     let valores = calculo.innerText.split(/[^0-9]/g).map(Number)
-    let result = 0;    
+    let result = 0;
 
     for (let index = 0; index < op.length; index++) {
-        
-        if (op[index] == 'e'){
-            let cal = Math.pow(valores[index], valores[index+1])
+
+        if (op[index] == 'e') {
+            let cal = Math.pow(valores[index], valores[index + 1])
             valores.splice(index, 2, cal);
             op.splice(index, 1);
             index--
-        } else if ((op[index] == '√')){
-            let cal = Math.sqrt(valores[index+1])
+        } else if ((op[index] == '√')) {
+            let cal = Math.sqrt(valores[index + 1])
             valores.splice(index, 2, cal);
             op.splice(index, 1);
             index--
-        }        
+        }
     }
     console.log(valores);
-    
+
     for (let i = 0; i < op.length; i++) {
-        if (op[i] == '/' || op[i] == '*'){
-            let cal = calcularOperacao(valores[i], op[i], valores[i+1])
+        if (op[i] == '/' || op[i] == '*') {
+            let cal = calcularOperacao(valores[i], op[i], valores[i + 1])
             valores.splice(i, 2, cal);
             op.splice(i, 1);
             i--
-        }  
+        }
     }
     console.log(valores);
 
     for (let i = 0; i < op.length; i++) {
-        let cal = calcularOperacao(valores[i], op[i], valores[i+1])
+        let cal = calcularOperacao(valores[i], op[i], valores[i + 1])
         valores.splice(i, 2, cal);
         op.splice(i, 1);
-        i--     
+        i--
     }
     console.log(valores);
     result = valores[0]
-    
+
     calculo.innerText += ` = ${result}`
 }
 
@@ -280,7 +280,7 @@ function calcularOperacao(a, operador, b) {
     }
 }
 
-function registrarProduto(){
+function registrarProduto() {
     let produto = document.getElementById('produto').value;
     let valor = document.getElementById('valor').value;
 
@@ -301,6 +301,94 @@ function registrarProduto(){
     document.getElementById('total').textContent = calcularTotalNota(listaProdutos);
 }
 
-function calcularTotalNota(lista){
-    console.log(lista.rows[0].cells[1]);
+function calcularTotalNota(lista) {
+    let total = 0;
+    for (let i = 0; i < lista.rows.length; i++) {
+        total += parseFloat(lista.rows[i].cells[1].textContent);
+    }
+
+    let desconto = total > 100 ? (total * 0.10) : 0;
+
+    return desconto != 0 ? `Total das compras: ${total}
+    Desconto de R$ ${desconto.toFixed(2)}
+    Valor final: ${total - desconto}` : (`Total das Compras = R$${total}`)
+}
+
+function calcularJurosInvestimento() {
+    let rendimento = document.getElementById('juros').value;
+
+    let taxRendimento = parseFloat(rendimento)
+    let anos = 72 / taxRendimento;
+
+
+    document.getElementById('resultado').textContent = `A uma taxa de rendimento de ${taxRendimento}%, levaria ${anos} anos para o investimento ser dobrado`
+}
+
+function advinharNumeroSorteado() {
+    let numSorteado = parseInt(sessionStorage.getItem('sortNum'));
+    let numInserido = parseInt(document.getElementById('numero').value);
+
+    let resultado = document.getElementById('resultado');
+
+    resultado.textContent = (numSorteado == numInserido) ? `Parabéns você acertou o numero ${numSorteado}` : `Não foi dessa vez, o numero que você digitou é ${numInserido < numSorteado ? "menor que o sorteado, tente um numero maior" : "maior que o numero sorteado, tente um numero menor"}`;
+
+}
+
+function calcularIdade() {
+    let dataNasc = document.getElementById('nascimento').value;
+    let dateNasc = new Date(dataNasc);
+    let dateNow = new Date();
+    let yearsOld = dateNow - dateNasc;
+
+    document.getElementById('resultado').textContent = `Pessoas que nasceram neste dia, devem ter ${Math.floor(yearsOld / 31536000000)} anos de idade.`
+}
+
+function cadastrarPessoa() {
+    let nomePessoa = document.getElementById('nome').value;
+
+    let lista = document.getElementById('lista-pessoas');
+
+    let newRow = document.createElement('tr');
+    let newData = document.createElement('td');
+
+    newData.textContent = nomePessoa;
+    newRow.appendChild(newData);
+    lista.appendChild(newRow);
+}
+
+function ordenarPessoa() {
+    let lista = document.getElementById('lista-pessoas').rows;
+    let listaArr = Array.from(lista).map(linha => linha.cells[0].textContent);
+
+    listaArr = listaArr.sort();
+
+    for (let i = 0; i < lista.length; i++) {
+        lista[i].cells[0].textContent = listaArr[i]
+    }
+}
+
+function verificarLogin() {
+    let email = document.getElementById('email').value;
+    let password = document.getElementById('senha').value;
+
+    let logins = [{
+        login: "igordsa99@gmail.com",
+        senha: "1234"
+    },
+    {
+        login: "lala@gmail.com",
+        senha: "4321"
+    }]
+
+    let index = logins.findIndex((user) => user.login == email && user.senha == password);
+    let resultado = document.getElementById('resultado');
+
+    if (index == -1) {
+        resultado.innerText = `Usuário ${email} não encontrado`
+    } else {
+        resultado.innerText = "Seja bem vindo"
+        window.location.href = "http://127.0.0.1:5500/Desafio-150_Questões/Manipulação-DOM/index.html"
+    }
+
+
 }

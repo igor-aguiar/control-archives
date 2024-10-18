@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crie uma página que simule um jogo de adivinhar números com múltiplas tentativas e dê dicas para o usuário.</title>
+</head>
+<body>
+    <button type="submit" onclick="geraNumeroAleatorio()">Gera Numero</button>
+    <h2 id="numberStatus"></h2>
+
+    <label for="numero">
+        Insira um valor para tentar advinhar o numero sorteado.
+    </label>
+    <input type="text" name="numero" id="numero">
+
+    <button onclick="advinharNumeroSorteado()">Tentar</button>
+
+    <p id="resultado"></p>
+
+    <script src="./script.js"></script>
+</body>
+</html>

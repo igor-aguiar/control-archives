@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crie uma página que receba uma lista de nomes e os exiba em ordem alfabética.</title>
+</head>
+<body>
+    <label for="nome">
+        Nome pessoa:
+        <input type="text" name="nome" id="nome">
+    </label>
+    <button onclick="cadastrarPessoa()">Registrar</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+            </tr>
+        </thead>
+        <tbody id="lista-pessoas">
+
+        </tbody>
+    </table>
+    <button onclick="ordenarPessoa()">Ordenar lista</button>
+
+
+    <script src="./script.js"></script>
+</body>
+</html>
