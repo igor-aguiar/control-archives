@@ -402,11 +402,11 @@ function calcularModaMedianaMedia(){
 
     media = numeros.reduce((a, b) => a + b, 0)/numeros.length;
     mediana = numeros.length % 2 != 0 ? numeros[Math.floor(numeros.length/2)] : (numeros[Math.floor(numeros.length/2)] + numeros[(numeros.length/2) - 1]) / 2;
-    moda = calcularModa(arr);
+    moda = calcularModa(numeros);
 
-    document.getElementById('moda').textContent = moda;
-    document.getElementById('media').textContent = media;
-    document.getElementById('mediana').textContent = mediana;
+    document.getElementById('moda').textContent = 'Moda: ' + moda;
+    document.getElementById('media').textContent = 'Media :' + media;
+    document.getElementById('mediana').textContent = 'Mediana: ' + mediana;
 }
 
 function calcularModa(numbers){
