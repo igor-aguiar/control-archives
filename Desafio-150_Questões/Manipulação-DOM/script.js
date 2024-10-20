@@ -393,15 +393,15 @@ function verificarLogin() {
 
 }
 
-function calcularModaMedianaMedia(){
+function calcularModaMedianaMedia() {
     let moda = 0.0;
     let media = 0.0;
     let mediana = 0.0;
 
     let numeros = document.getElementById('numeros').value.split(',').map(Number);
 
-    media = numeros.reduce((a, b) => a + b, 0)/numeros.length;
-    mediana = numeros.length % 2 != 0 ? numeros[Math.floor(numeros.length/2)] : (numeros[Math.floor(numeros.length/2)] + numeros[(numeros.length/2) - 1]) / 2;
+    media = numeros.reduce((a, b) => a + b, 0) / numeros.length;
+    mediana = numeros.length % 2 != 0 ? numeros[Math.floor(numeros.length / 2)] : (numeros[Math.floor(numeros.length / 2)] + numeros[(numeros.length / 2) - 1]) / 2;
     moda = calcularModa(numeros);
 
     document.getElementById('moda').textContent = 'Moda: ' + moda;
@@ -409,13 +409,13 @@ function calcularModaMedianaMedia(){
     document.getElementById('mediana').textContent = 'Mediana: ' + mediana;
 }
 
-function calcularModa(numbers){
+function calcularModa(numbers) {
     let frequencia = {};
     let maxFreq = 0;
     let modas = [];
 
     numbers.forEach(num => {
-        frequencia[num] = (frequencia[num] || 0 ) + 1;
+        frequencia[num] = (frequencia[num] || 0) + 1;
         if (frequencia[num] > maxFreq) {
             maxFreq = frequencia[num];
         }
@@ -423,13 +423,116 @@ function calcularModa(numbers){
 
     for (let num in frequencia) {
         if (frequencia[num] === maxFreq) {
-            modas.push(Number(num))           
+            modas.push(Number(num))
         }
     }
 
-    if (modas.length === numbers.length){
+    if (modas.length === numbers.length) {
         return "Não há moda";
     }
 
     return modas;
+}
+
+function gerarSenhaAleatoria() {
+    let tamSenha = parseInt(document.getElementById('tamanho_senha').value);
+
+    let caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+={}|[]:;\'<>,.?/'
+    let senha = '';
+
+    for (let i = 0; i < tamSenha; i++) {
+        let local = Math.floor(Math.random() * caracteres.length);
+        senha += caracteres.charAt(local);
+    }
+
+    document.getElementById('resultado').textContent = senha;
+}
+
+function contarPalavras() {
+    let fraseInserida = document.getElementById('frase').value;
+
+    let arrFrase = fraseInserida.split(' ');
+
+    document.getElementById('resultado').textContent = `A frase contém ${arrFrase.length} palavras.`
+}
+
+function calcularBinarioParaInteiro() {
+    let inpt = document.getElementById('binario').value;
+
+    document.getElementById('resultado').textContent = parseInt(inpt, 2);
+}
+
+function transformaCelsiusEmKelvinFahrenheit() {
+    let tempCelsius = parseInt(document.getElementById('temperatura').value);
+
+    let kelvin = tempCelsius + 273.15;
+
+    let fahrenheit = (9 / 5 * tempCelsius) + 32;
+
+    document.getElementById('resultado').textContent = `Kelvin: ${kelvin} | Fahrenheit: ${fahrenheit}`
+}
+
+function identificarPrimos() {
+    let numeros = document.getElementById('identificar').value;
+    let arrNumeros = numeros.split(',').map(Number);
+
+
+    document.getElementById('resultado').textContent = arrNumeros.filter(num => isPrimo(num))
+}
+
+function isPrimo(number) {
+    let result = true;
+    if (number <= 1) {
+        result = false;
+    }
+
+    else if (number == 2) {
+        result = true;
+    }
+
+    else if (number % 2 == 0) {
+        result = false
+    }
+
+
+    for (let i = 3; i <= Math.sqrt(number); i += 2) {
+        if (number % i == 0) {
+            result = false;
+            break;
+        }
+    }
+
+    return result;
+}
+
+sessionStorage.setItem( 'votos' , votos = {
+    opcao1: 0,
+    opcao2: 0,
+    opcao3: 0,
+    opcao4: 0
+})
+
+
+function contabilizarVotos() {
+    
+    const form = document.getElementById('votacaoForm');
+    const resultadoDiv = document.getElementById('resultado');
+    const opcaoEscolhida = document.querySelector('input[name="opcao"]:checked').value;
+
+    let votes = sessionStorage.getItem('votos')
+    votes.votos[opcaoEscolhida]++;
+
+    exibirResultado();
+}
+
+function exibirResultado() {
+    resultadoDiv.innerHTML = `
+      <p>Resultado da Votação:</p>
+      <ul>
+        <li>Opção 1: ${votos.opcao1} votos</li>
+        <li>Opção 2: ${votos.opcao2} votos</li>
+        <li>Opção 3: ${votos.opcao3} votos</li>
+        <li>Opção 4: ${votos.opcao4} votos</li>
+      </ul>
+    `;
 }

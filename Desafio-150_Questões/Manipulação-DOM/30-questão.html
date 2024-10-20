@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crie uma página que simule um sistema de votação. O usuário pode votar em diferentes opções e o resultado é
+        exibido ao final.</title>
+</head>
+
+<body>
+
+    <h1>Sistema de Votação</h1>
+    <p>Vote em uma das opções abaixo:</p>
+
+    <form id="votacaoForm">
+        <label>
+            <input type="radio" name="opcao" value="opcao1" required> Opção 1
+        </label><br>
+        <label>
+            <input type="radio" name="opcao" value="opcao2"> Opção 2
+        </label><br>
+        <label>
+            <input type="radio" name="opcao" value="opcao3"> Opção 3
+        </label><br>
+        <label>
+            <input type="radio" name="opcao" value="opcao4"> Opção 4
+        </label><br><br>
+        <button type="submit" onclick="contabilizarVotos()">Votar</button>
+    </form>
+
+    <div class="resultado" id="resultado">
+        <!-- Os resultados serão exibidos aqui -->
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
