@@ -13,7 +13,6 @@
     <h1>Sistema de Votação</h1>
     <p>Vote em uma das opções abaixo:</p>
 
-    <form id="votacaoForm">
         <label>
             <input type="radio" name="opcao" value="opcao1" required> Opção 1
         </label><br>
@@ -27,7 +26,8 @@
             <input type="radio" name="opcao" value="opcao4"> Opção 4
         </label><br><br>
         <button type="submit" onclick="contabilizarVotos()">Votar</button>
-    </form>
+        <button type="submit" onclick="exibirResultado()">Exibir Resultado</button>
+
 
     <div class="resultado" id="resultado">
         <!-- Os resultados serão exibidos aqui -->

@@ -505,27 +505,25 @@ function isPrimo(number) {
     return result;
 }
 
-sessionStorage.setItem( 'votos' , votos = {
+let votos = {
     opcao1: 0,
     opcao2: 0,
     opcao3: 0,
     opcao4: 0
-})
+};
 
 
 function contabilizarVotos() {
-    
-    const form = document.getElementById('votacaoForm');
-    const resultadoDiv = document.getElementById('resultado');
     const opcaoEscolhida = document.querySelector('input[name="opcao"]:checked').value;
 
-    let votes = sessionStorage.getItem('votos')
-    votes.votos[opcaoEscolhida]++;
+    console.log(opcaoEscolhida)
 
-    exibirResultado();
+    votos[opcaoEscolhida]++;
 }
 
 function exibirResultado() {
+    const resultadoDiv = document.getElementById('resultado');
+
     resultadoDiv.innerHTML = `
       <p>Resultado da Votação:</p>
       <ul>
