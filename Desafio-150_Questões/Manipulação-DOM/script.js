@@ -511,8 +511,6 @@ let votos = {
     opcao3: 0,
     opcao4: 0
 };
-
-
 function contabilizarVotos() {
     const opcaoEscolhida = document.querySelector('input[name="opcao"]:checked').value;
 
@@ -533,4 +531,146 @@ function exibirResultado() {
         <li>Opção 4: ${votos.opcao4} votos</li>
       </ul>
     `;
+}
+
+function converterEmRomanos() {
+    let num = parseInt(document.getElementById('numeros').value);
+
+    //O I corresponde ao número 1, V ao 5, X ao 10, L ao 50, C ao 100, D ao 500 e o M ao mil.
+    const valores = [
+        { valor: 1000, romano: 'M' },
+        { valor: 900, romano: 'CM' },
+        { valor: 500, romano: 'D' },
+        { valor: 400, romano: 'CD' },
+        { valor: 100, romano: 'C' },
+        { valor: 90, romano: 'XC' },
+        { valor: 50, romano: 'L' },
+        { valor: 40, romano: 'XL' },
+        { valor: 10, romano: 'X' },
+        { valor: 9, romano: 'IX' },
+        { valor: 5, romano: 'V' },
+        { valor: 4, romano: 'IV' },
+        { valor: 1, romano: 'I' }
+    ];
+
+    let resultado = '';
+
+    valores.forEach(({ valor, romano }) => {
+        while (num >= valor) {
+            resultado += romano;
+            num -= valor;
+        }
+    });
+
+    document.getElementById('resultado').textContent = resultado;
+}
+
+function exibirPrimos() {
+    let maxNum = parseInt(document.getElementById('numero').value);
+    let primos = [];
+
+    for (let i = 1; i <= maxNum; i++) {
+        if (isPrimo(i)) {
+            primos.push(i);
+        }
+    }
+
+    document.getElementById('resultado').textContent = "números primos: " + primos.join(', ');
+}
+
+function encontrarMaximoDivisorComum(){
+    let num1 = parseInt(document.getElementById('num_1').value)
+    let num2 = parseInt(document.getElementById('num_2').value)
+
+    while (num2 !== 0){
+        let resto = num1 % num2;
+        num1 = num2;
+        num2 = resto;
+    }
+
+    document.getElementById('resultado').textContent = `O Maximo Divisor Comum (MDC) é: ${num1}`
+}
+
+function substituirPalavras(){
+    let palavras = document.getElementById('texto').value.split(' ');
+
+    palavras = palavras.map(str => str == 'olá' ? 'XPTO' : str)
+    
+    
+    document.getElementById('resultado').textContent = palavras.join(' ');
+}
+
+function calcularNotasSaque(){
+    let valorSaque = parseInt(document.getElementById('valores').value)
+    let notas = {
+        'cem' : 0,
+        'cinquenta' : 0,
+        'vinte': 0,
+        'dez' : 0,
+        'cinco' : 0,
+        'dois' : 0,
+        'um' : 0
+    };
+    
+    while (valorSaque > 0){
+        if (valorSaque >= 100){
+            notas['cem']++;
+            valorSaque -= 100
+        } else if (valorSaque >= 50){
+            notas['cinquenta']++;
+            valorSaque -= 50
+        }else if (valorSaque >= 20){
+            notas['vinte']++;
+            valorSaque -= 20
+        }else if (valorSaque >= 10){
+            notas['dez']++;
+            valorSaque -= 10
+        }else if (valorSaque >= 5){
+            notas['cinco']++;
+            valorSaque -= 5
+        }else if (valorSaque >= 2){
+            notas['dois']++;
+            valorSaque -= 2
+        }else if (valorSaque >= 1){
+            notas['um']++;
+            valorSaque -= 1
+        } else {
+            valorSaque -= valorSaque;
+        }
+    }
+
+    document.getElementById('resultado').textContent = `R$ 100 = ${notas['cem']}, R$ 50 = ${notas['cinquenta']}, R$ 20 = ${notas['vinte']}, R$ 10 = ${notas['dez']}, R$ 5 = ${notas['cinco']}, R$ 2 = ${notas['dois']}, R$ 1 = ${notas['um']}`
+}
+
+function validarCPF() {
+    let cpf = document.getElementById('cpf').value
+
+    // Remover caracteres não numéricos
+    cpf = cpf.replace(/\D/g, '');
+
+    // Verificar se o CPF tem 11 dígitos
+    if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) {
+        return false; // CPF inválido
+    }
+
+    // Calcular o primeiro dígito verificador
+    let soma = 0;
+    for (let i = 0; i < 9; i++) {
+        soma += parseInt(cpf[i]) * (10 - i);
+    }
+    let primeiroDigito = (soma * 10) % 11;
+    primeiroDigito = primeiroDigito === 10 ? 0 : primeiroDigito;
+
+    // Calcular o segundo dígito verificador
+    soma = 0;
+    for (let i = 0; i < 10; i++) {
+        soma += parseInt(cpf[i]) * (11 - i);
+    }
+    let segundoDigito = (soma * 10) % 11;
+    segundoDigito = segundoDigito === 10 ? 0 : segundoDigito;
+
+    // Comparar os dígitos verificadores
+    let isValid = primeiroDigito === parseInt(cpf[9]) && segundoDigito === parseInt(cpf[10]);
+
+    document.getElementById('resultado').textContent = isValid ? "CPF Válido" : "CPF Inválido"
 }

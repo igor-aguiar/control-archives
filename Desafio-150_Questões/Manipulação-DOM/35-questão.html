@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crie uma página que simule um sistema de caixa eletrônico. O usuário insere um valor e a página exibe a quantidade de notas de cada valor necessário para totalizar o valor inserido.</title>
+</head>
+<body>
+
+    <label for="valores">Digite o saque desejado:</label>
+    <input type="number" name="valores" id="valores" min="0" step="0.01"> 
+    <button onclick="calcularNotasSaque()">Saque</button>
+
+    <p id="resultado"></p>
+    
+    <script src="./script.js"></script>
+</body>
+</html>
