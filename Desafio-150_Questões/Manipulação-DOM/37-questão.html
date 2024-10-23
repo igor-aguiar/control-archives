@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crie uma página que receba uma lista de nomes e permita que o usuário busque por um nome específico, exibindo se ele está na lista ou não.</title>
+</head>
+<body>
+    <label for="lista">Insira a lista de nomes. (Ex: Igor, Duda, Barb, ..., N.)</label>
+    <input type="text" name="lista" id="lista">
+
+    <label for="nome">Procurar por:</label>
+    <input type="text" name="nome" id="nome">
+
+    <button onclick="encontrarNome()">Encontrar</button>
+
+    <p id="resultado"></p>
+
+    <script src="./script.js"></script>
+</body>
+</html>

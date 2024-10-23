@@ -674,3 +674,47 @@ function validarCPF() {
 
     document.getElementById('resultado').textContent = isValid ? "CPF Válido" : "CPF Inválido"
 }
+
+function encontrarNome(){
+    let listaNomes = document.getElementById('lista').value.split(',');
+    let nome = document.getElementById('nome').value;
+
+    let result = listaNomes.filter(nomeNaLista => nomeNaLista == nome);
+
+    console.log(result.length);
+
+    document.getElementById('resultado').textContent = result.length == 0 ? `Não foi encontrado ${nome}` : `Existe ${nome} na lista`
+}
+
+function converterMoeda(){
+    let valorReais = parseFloat(document.getElementById('valor').value);
+
+    let dolar = valorReais/5.744;
+    let euro = valorReais/6.16;
+    let libra = valorReais/7.411;
+
+    document.getElementById('resultado').textContent = `R$ ${valorReais.toFixed(2)} esta valendo US$ ${dolar.toFixed(2)} dolares, $ ${euro.toFixed(2)} euro, $ ${libra.toFixed(2)} Libras`
+}
+
+function decomporEmNumerosPrimos(){
+    const numero = parseInt(document.getElementById('numero').value);
+    const resultadoDiv = document.getElementById('resultado');
+    
+    if (isNaN(numero) || numero < 2) {
+      resultadoDiv.innerHTML = "Por favor, insira um número válido (maior ou igual a 2).";
+      return;
+    }
+
+    let fatores = [];
+    let n = numero;
+
+    // Encontrar fatores primos
+    for (let i = 2; i <= n; i++) {
+      while (n % i === 0) {
+        fatores.push(i);
+        n /= i;
+      }
+    }
+
+    resultadoDiv.innerHTML = `A decomposição de ${numero} em fatores primos é: ${fatores.join(' x ')}.`;
+}
