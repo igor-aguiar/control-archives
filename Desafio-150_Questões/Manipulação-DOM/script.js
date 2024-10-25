@@ -578,11 +578,11 @@ function exibirPrimos() {
     document.getElementById('resultado').textContent = "números primos: " + primos.join(', ');
 }
 
-function encontrarMaximoDivisorComum(){
+function encontrarMaximoDivisorComum() {
     let num1 = parseInt(document.getElementById('num_1').value)
     let num2 = parseInt(document.getElementById('num_2').value)
 
-    while (num2 !== 0){
+    while (num2 !== 0) {
         let resto = num1 % num2;
         num1 = num2;
         num2 = resto;
@@ -591,47 +591,47 @@ function encontrarMaximoDivisorComum(){
     document.getElementById('resultado').textContent = `O Maximo Divisor Comum (MDC) é: ${num1}`
 }
 
-function substituirPalavras(){
+function substituirPalavras() {
     let palavras = document.getElementById('texto').value.split(' ');
 
     palavras = palavras.map(str => str == 'olá' ? 'XPTO' : str)
-    
-    
+
+
     document.getElementById('resultado').textContent = palavras.join(' ');
 }
 
-function calcularNotasSaque(){
+function calcularNotasSaque() {
     let valorSaque = parseInt(document.getElementById('valores').value)
     let notas = {
-        'cem' : 0,
-        'cinquenta' : 0,
+        'cem': 0,
+        'cinquenta': 0,
         'vinte': 0,
-        'dez' : 0,
-        'cinco' : 0,
-        'dois' : 0,
-        'um' : 0
+        'dez': 0,
+        'cinco': 0,
+        'dois': 0,
+        'um': 0
     };
-    
-    while (valorSaque > 0){
-        if (valorSaque >= 100){
+
+    while (valorSaque > 0) {
+        if (valorSaque >= 100) {
             notas['cem']++;
             valorSaque -= 100
-        } else if (valorSaque >= 50){
+        } else if (valorSaque >= 50) {
             notas['cinquenta']++;
             valorSaque -= 50
-        }else if (valorSaque >= 20){
+        } else if (valorSaque >= 20) {
             notas['vinte']++;
             valorSaque -= 20
-        }else if (valorSaque >= 10){
+        } else if (valorSaque >= 10) {
             notas['dez']++;
             valorSaque -= 10
-        }else if (valorSaque >= 5){
+        } else if (valorSaque >= 5) {
             notas['cinco']++;
             valorSaque -= 5
-        }else if (valorSaque >= 2){
+        } else if (valorSaque >= 2) {
             notas['dois']++;
             valorSaque -= 2
-        }else if (valorSaque >= 1){
+        } else if (valorSaque >= 1) {
             notas['um']++;
             valorSaque -= 1
         } else {
@@ -675,7 +675,7 @@ function validarCPF() {
     document.getElementById('resultado').textContent = isValid ? "CPF Válido" : "CPF Inválido"
 }
 
-function encontrarNome(){
+function encontrarNome() {
     let listaNomes = document.getElementById('lista').value.split(',');
     let nome = document.getElementById('nome').value;
 
@@ -686,23 +686,23 @@ function encontrarNome(){
     document.getElementById('resultado').textContent = result.length == 0 ? `Não foi encontrado ${nome}` : `Existe ${nome} na lista`
 }
 
-function converterMoeda(){
+function converterMoeda() {
     let valorReais = parseFloat(document.getElementById('valor').value);
 
-    let dolar = valorReais/5.744;
-    let euro = valorReais/6.16;
-    let libra = valorReais/7.411;
+    let dolar = valorReais / 5.744;
+    let euro = valorReais / 6.16;
+    let libra = valorReais / 7.411;
 
     document.getElementById('resultado').textContent = `R$ ${valorReais.toFixed(2)} esta valendo US$ ${dolar.toFixed(2)} dolares, $ ${euro.toFixed(2)} euro, $ ${libra.toFixed(2)} Libras`
 }
 
-function decomporEmNumerosPrimos(){
+function decomporEmNumerosPrimos() {
     const numero = parseInt(document.getElementById('numero').value);
     const resultadoDiv = document.getElementById('resultado');
-    
+
     if (isNaN(numero) || numero < 2) {
-      resultadoDiv.innerHTML = "Por favor, insira um número válido (maior ou igual a 2).";
-      return;
+        resultadoDiv.innerHTML = "Por favor, insira um número válido (maior ou igual a 2).";
+        return;
     }
 
     let fatores = [];
@@ -710,11 +710,131 @@ function decomporEmNumerosPrimos(){
 
     // Encontrar fatores primos
     for (let i = 2; i <= n; i++) {
-      while (n % i === 0) {
-        fatores.push(i);
-        n /= i;
-      }
+        while (n % i === 0) {
+            fatores.push(i);
+            n /= i;
+        }
     }
 
     resultadoDiv.innerHTML = `A decomposição de ${numero} em fatores primos é: ${fatores.join(' x ')}.`;
+}
+
+let seconds = 0;
+let minutes = 0;
+let hours = 0;
+let interval = null;
+let running = false;
+
+function updateDisplay() {
+    let formattedSeconds = seconds < 10 ? `0${seconds}` : seconds;
+    let formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+    let formattedHours = hours < 10 ? `0${hours}` : hours;
+
+    document.getElementById('timer').innerText = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+}
+
+function iniciarTimer() {
+    if (!running) {
+        interval = setInterval(() => {
+            seconds++;
+            if (seconds === 60) {
+                seconds = 0;
+                minutes++;
+                if (minutes === 60) {
+                    minutes = 0;
+                    hours++;
+                }
+            }
+            updateDisplay();
+        }, 1000);
+        running = true;
+    }
+}
+
+function pausarTime() {
+    clearInterval(interval);
+    running = false;
+}
+
+function reiniciarTimer() {
+    clearInterval(interval);
+    seconds = 0;
+    minutes = 0;
+    hours = 0;
+    updateDisplay();
+    running = false;
+}
+
+
+let maior = {
+    prod: '',
+    val: 0
+}
+let menor = {
+    prod: '',
+    val: 0
+}
+function registrarProdutoIndicadores() {
+    let produto = document.getElementById('produto').value;
+    let valor = parseInt(document.getElementById('valor').value);
+
+    if (valor > maior.val) {
+        maior.prod = produto
+        maior.val = valor
+    }
+    if (valor < menor.val || menor.val == 0) {
+        menor.prod = produto
+        menor.val = valor
+    }
+
+    let listaProdutos = document.getElementById('lista-produtos');
+
+    let linha = document.createElement('tr');
+    let prodCol = document.createElement('td');
+    let valCol = document.createElement('td');
+
+    prodCol.textContent = produto;
+    valCol.textContent = valor;
+
+    linha.appendChild(prodCol);
+    linha.appendChild(valCol);
+    listaProdutos.appendChild(linha);
+
+    let total = 0;
+    for (let i = 0; i < listaProdutos.rows.length; i++) {
+        total += parseFloat(listaProdutos.rows[i].cells[1].textContent);
+    }
+
+    listaProdutos.childNodes
+    document.getElementById('total').textContent = `Mais barato: ${menor.prod} - R$ ${menor.val} | Mais Caro: ${maior.prod} - R$ ${maior.val} | Média de preço: R$ ${total / listaProdutos.rows.length}`;
+}
+
+function registrarTemperaturaIndicadores() {
+    let temp = parseInt(document.getElementById('temperatura').value);
+
+    if (temp > maior.val) {
+        maior.val = temp
+    }
+    if (temp < menor.val || menor.val == 0) {
+        menor.val = temp
+    }
+
+    let listaProdutos = document.getElementById('lista-produtos');
+
+    let linha = document.createElement('tr');
+    let valCol = document.createElement('td');
+
+    valCol.textContent = temp;
+
+    linha.appendChild(valCol);
+    listaProdutos.appendChild(linha);
+
+    let total = 0;
+    for (let i = 0; i < listaProdutos.rows.length; i++) {
+        total += parseFloat(listaProdutos.rows[i].cells[0].textContent);
+    }
+
+    listaProdutos.childNodes
+    document.getElementById('total').textContent = `Menor temperatura:${menor.val} | Maior temperatura: ${maior.val} | Média de temperaturas: ${(total / listaProdutos.rows.length).toFixed(2)}`;
+
 }
