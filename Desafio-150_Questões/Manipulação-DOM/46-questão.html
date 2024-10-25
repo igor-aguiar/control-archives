@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crie uma página que simule um formulário de contato com validação de campos obrigatórios.</title>
+</head>
+
+<body>
+    <h2>Contato</h2>
+    <label for="nome">Nome</label>
+    <input type="text" id="nome" name="nome" required placeholder="Seu nome">
+
+    <label for="email">E-mail</label>
+    <input type="email" id="email" name="email" required placeholder="Seu e-mail">
+
+    <label for="telefone">Telefone</label>
+    <input type="tel" id="telefone" name="telefone" placeholder="(XX) XXXXX-XXXX">
+
+    <button type="submit" onclick="validarFormulario()">Enviar</button>
+
+    <p id="resultado"></p>
+    <script src="./script.js"></script>
+</body>
+
+</html>

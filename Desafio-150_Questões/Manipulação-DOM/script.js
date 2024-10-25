@@ -838,3 +838,132 @@ function registrarTemperaturaIndicadores() {
     document.getElementById('total').textContent = `Menor temperatura:${menor.val} | Maior temperatura: ${maior.val} | Média de temperaturas: ${(total / listaProdutos.rows.length).toFixed(2)}`;
 
 }
+
+function calcularVelocidade() {
+    let vel = parseInt(document.getElementById('tempo').value);
+    let dist = parseInt(document.getElementById('distancia').value)
+
+    document.getElementById('resultado').textContent = `Velocidade média = ${dist / vel} KM/h`
+}
+
+function calcularDivisores() {
+    let num = parseInt(document.getElementById('numero').value)
+    let divsores = []
+    for (let i = 0; i <= num / 2; i++) {
+        if (num % i == 0) {
+            divsores.push(i)
+        }
+    }
+
+    document.getElementById('resultado').textContent = `Dividores = ${divsores.map(String).join(', ')}`
+}
+
+function ordenarNumerosDecrescente() {
+    let input = document.getElementById('numeros').value;
+
+    let numerosArray = input.split(',').map(Number);
+
+    numerosArray.sort((a, b) => b - a);
+
+    document.getElementById('resultadoOrdenado').innerText = 'Números ordenados: ' + numerosArray.join(', ');
+}
+
+function validarFormulario() {
+    const telefone = document.getElementById("telefone").value;
+    const mensagemErro = document.getElementById("resultado");
+
+    mensagemErro.innerHTML = "";
+
+    const telefoneRegex = /^\(\d{2}\) \d{5}-\d{4}$/;
+    if (telefone && !telefoneRegex.test(telefone)) {
+        alert("Por favor, insira o telefone no formato (XX) XXXXX-XXXX.");
+        return false;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        alert("Por favor, insira um e-mail válido. identificador@dominio.com");
+        return false;
+    }
+}
+
+
+function registrarNotasIndicadores() {
+    let temp = parseInt(document.getElementById('nota').value);
+
+    if (temp > maior.val) {
+        maior.val = temp
+    }
+    if (temp < menor.val || menor.val == 0) {
+        menor.val = temp
+    }
+
+    let listaProdutos = document.getElementById('lista-produtos');
+
+    let linha = document.createElement('tr');
+    let valCol = document.createElement('td');
+
+    valCol.textContent = temp;
+
+    linha.appendChild(valCol);
+    listaProdutos.appendChild(linha);
+
+    let total = 0;
+    for (let i = 0; i < listaProdutos.rows.length; i++) {
+        total += parseFloat(listaProdutos.rows[i].cells[0].textContent);
+    }
+
+    listaProdutos.childNodes
+    document.getElementById('total').textContent = `Menor Nota:${menor.val} | Maior Nota: ${maior.val} | Média de Notas: ${(total / listaProdutos.rows.length).toFixed(2)}`;
+
+}
+
+function calcularLetras(){
+    let text = document.getElementById('texto').value.toLowerCase();
+
+    let letras = ('abcdefghijklmnopqrstuvwxyz').split('');
+    let quantidadeLetras = {};
+
+    for (let i = 0; i < letras.length; i++) {
+        quantidadeLetras[letras[i]] = contadorDeLetra(letras[i], text)
+    }
+
+    let resultado = '';
+    for (let letra in quantidadeLetras) {
+        if (quantidadeLetras[letra] !== 0) {
+            resultado += `${letra} : ${quantidadeLetras[letra]}  |  `;
+        }
+    }
+
+
+    document.getElementById('resultado').textContent = resultado;
+}
+
+function contadorDeLetra(letra, texto){
+    let contador = 0;
+
+    texto.split('').forEach(leet => {
+        if (leet == letra) contador++
+    });
+
+    return contador;
+}
+
+function calcularValorAbsoluto() {
+    let numero = document.getElementById("numero").value;
+    let valorAbsoluto = Math.abs(numero);
+    document.getElementById("resultado").textContent = `Valor Absoluto: ${valorAbsoluto}`;
+}
+
+function exibirDiaSemana() {
+    let data = document.getElementById("data").value;
+    if (!data) {
+        document.getElementById("resultado").textContent = "Por favor, selecione uma data.";
+        return;
+    }
+    
+    let diasSemana = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"];
+    let dataObjeto = new Date(data);
+    let diaSemana = diasSemana[dataObjeto.getDay()];
+
+    document.getElementById("resultado").textContent = `Dia da semana: ${diaSemana}`;
+}

@@ -6,19 +6,16 @@
     <title>Crie uma página que receba uma lista de preços e calcule o preço médio, o maior e o menor preço.</title>
 </head>
 <body>
-    <label for="produtos">
-        Produto:
-        <input type="text" name="produto" id="produto">
-        Valor:
-        <input type="number" name="valor" id="valor" step="0.01">
+    <label for="temperatura">
+        Temperatura:
+        <input type="text" name="temperatura" id="temperatura">
     </label>
-    <button onclick="registrarProdutoIndicadores()">Registrar</button>
+    <button onclick="registrarTemperaturaIndicadores()">Registrar</button>
 
     <table>
         <thead>
             <tr>
-                <th>Produto</th>
-                <th>Valor</th>
+                <th>Temperaturas</th>
             </tr>
         </thead>
         <tbody id="lista-produtos">
