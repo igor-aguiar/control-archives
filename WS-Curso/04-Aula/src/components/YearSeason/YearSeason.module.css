@@ -1,0 +1,21 @@
+.summer{
+    color: orange;
+    background-color: rgb(0, 0, 0);
+}
+.winter{
+    color: grey;
+    background-color: rgb(111, 105, 189);
+    text-shadow: 1px 1px 2px black,
+    0 0 1em blue,
+    0 0 0.2em blue;
+}
+.fall{
+    color: brown;
+    background-color: rgb(232, 149, 90);
+
+}
+.spring{
+    color: green;
+    background-color: rgb(243, 205, 101);
+
+}
