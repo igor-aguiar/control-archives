@@ -1,0 +1,81 @@
+{
+  "teste": [
+    {
+      "id": 1,
+      "mensagem": "Backend fake funcionando!"
+    }
+  ],
+  "alunos": [
+    {
+      "id": 1,
+      "nome": "Maria Silva",
+      "email": "maria@ufpb.br",
+      "curso": "física"
+    },
+    {
+      "id": 2,
+      "nome": "João Silva",
+      "email": "joao@gmail.com",
+      "curso": "letras"
+    },
+    {
+      "id": 3,
+      "nome": "José Silva",
+      "email": "jose@gmail.com",
+      "curso": "arquitetura"
+    },
+    {
+      "nome": "Novo nome",
+      "curso": "novo curso",
+      "id": 4
+    },
+    {
+      "nome": "Joana",
+      "email": "novo@patch.com",
+      "curso": "sistemas",
+      "id": 5
+    },
+    {
+      "nome": "Igor",
+      "email": "igor@dsa",
+      "curso": "React",
+      "id": 6
+    },
+    {
+      "nome": "Lala",
+      "email": "lala@gmail",
+      "curso": "React",
+      "id": 7
+    },
+    {
+      "nome": "aaaa",
+      "email": "lala@gmail",
+      "curso": "React",
+      "id": 8
+    },
+    {
+      "nome": "Igor A",
+      "email": "igor@gmail",
+      "curso": "React",
+      "id": 9
+    },
+    {
+      "nome": "",
+      "email": "asd",
+      "curso": "asd",
+      "id": 10
+    },
+    {
+      "nome": "",
+      "email": "Igor@gmail.com",
+      "curso": "asdas",
+      "id": 11
+    },
+    {
+      "nome": "Renan",
+      "email": "renan@gmail.com",
+      "curso": "Java",
+      "id": 12
+    }
+  ]
+}
