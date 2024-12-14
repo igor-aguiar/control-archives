@@ -24,7 +24,7 @@ const Resenhas = () => {
       <h1>Resenhas de Livros</h1>
       {resenhas.map((resenha) => (
         <div key={resenha.id}>
-          <h2>{resenha.tituloLivro}</h2>
+          <a href={`/visualiza-resenha/${resenha.id}`}><h2>{resenha.tituloLivro}</h2></a>
           <h3>{resenha.autor}</h3>
           <p>{resenha.resumo}</p>
         </div>
