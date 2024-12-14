@@ -6,6 +6,8 @@ const Navbar = () => {
   return (
     <div>
         <Link to='/'>Incial</Link>
+        <br />
+        <Link to='/sobre-nos'>Sobre nós</Link>
     </div>
   )
 }
