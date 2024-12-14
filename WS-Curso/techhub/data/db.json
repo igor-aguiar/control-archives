@@ -1,0 +1,64 @@
+{
+    "artigos": [
+        {
+            "id": 1,
+            "titulo": "Introdução ao JavaScript",
+            "resumo": "Descubra os fundamentos da linguagem JavaScript e como ela é usada no desenvolvimento web.",
+            "conteudo": "JavaScript é uma linguagem de programação essencial para o desenvolvimento web moderno. Ele permite criar interatividade em páginas web, como menus dinâmicos, animações e validação de formulários. Nesta introdução, exploramos as bases da linguagem, incluindo variáveis, funções e estruturas de controle."
+        },
+        {
+            "id": 2,
+            "titulo": "Benefícios do React para Desenvolvedores",
+            "resumo": "Veja por que React é uma das bibliotecas mais populares para construir interfaces de usuário.",
+            "conteudo": "React é uma biblioteca JavaScript criada pelo Facebook que facilita a criação de interfaces de usuário reutilizáveis e performáticas. Este artigo discute o sistema de componentes, o uso de hooks e como o React simplifica o desenvolvimento de aplicações SPA."
+        },
+        {
+            "id": 3,
+            "titulo": "Guia Completo para Flexbox",
+            "resumo": "Aprenda como usar Flexbox para criar layouts responsivos de maneira simples.",
+            "conteudo": "Flexbox é uma técnica de layout em CSS que permite alinhar e distribuir espaço entre itens dentro de um contêiner de maneira eficiente. Neste guia, cobrimos propriedades como `justify-content`, `align-items` e exemplos práticos para criar layouts flexíveis."
+        },
+        {
+            "id": 4,
+            "titulo": "10 Dicas para Melhorar o SEO do seu Site",
+            "resumo": "Otimize o desempenho do seu site nos mecanismos de busca com estas dicas essenciais.",
+            "conteudo": "SEO, ou Search Engine Optimization, é fundamental para aumentar a visibilidade do seu site. Este artigo apresenta práticas recomendadas, como o uso de palavras-chave, a otimização de imagens e a criação de conteúdo de qualidade."
+        },
+        {
+            "id": 5,
+            "titulo": "O Futuro do Desenvolvimento de Aplicativos Móveis",
+            "resumo": "Explore as tendências e tecnologias que estão moldando o futuro do desenvolvimento móvel.",
+            "conteudo": "Com a crescente adoção de tecnologias como Flutter, React Native e PWAs, o desenvolvimento de aplicativos móveis está evoluindo rapidamente. Este artigo analisa essas tecnologias, juntamente com o impacto de 5G e inteligência artificial no setor."
+        },
+        {
+            "id": 6,
+            "titulo": "Primeiros Passos com Python",
+            "resumo": "Aprenda os conceitos básicos de Python, uma das linguagens mais populares da atualidade.",
+            "conteudo": "Python é conhecido por sua simplicidade e versatilidade. Este guia apresenta conceitos básicos como variáveis, loops, funções e estruturas de dados para iniciantes que desejam explorar o mundo da programação."
+        },
+        {
+            "id": 7,
+            "titulo": "Criando APIs RESTful com Node.js",
+            "resumo": "Veja como construir APIs modernas e escaláveis usando Node.js e Express.",
+            "conteudo": "APIs RESTful são fundamentais para conectar aplicações e serviços. Com o Node.js, você pode criar servidores performáticos e escaláveis. Este artigo explica como usar o Express para criar rotas, manipular dados e conectar-se a bancos de dados."
+        },
+        {
+            "id": 8,
+            "titulo": "Introdução ao Docker para Desenvolvedores",
+            "resumo": "Descubra como o Docker pode simplificar o gerenciamento de ambientes de desenvolvimento.",
+            "conteudo": "Docker é uma plataforma que permite criar, implantar e gerenciar contêineres de maneira eficiente. Este artigo cobre os conceitos básicos, como criar imagens Docker, executar contêineres e configurar um ambiente consistente."
+        },
+        {
+            "id": 9,
+            "titulo": "Segurança em Aplicações Web: Boas Práticas",
+            "resumo": "Proteja sua aplicação contra as ameaças mais comuns com estas práticas de segurança.",
+            "conteudo": "A segurança em aplicações web é essencial para proteger os dados dos usuários. Este artigo aborda práticas como validação de entrada, proteção contra ataques XSS e CSRF, e a importância de manter as dependências atualizadas."
+        },
+        {
+            "id": 10,
+            "titulo": "Entendendo o Git e o GitHub",
+            "resumo": "Aprenda como versionar seus projetos e colaborar usando Git e GitHub.",
+            "conteudo": "Git é um sistema de controle de versão que permite rastrear alterações no código e colaborar de forma eficiente. Este artigo apresenta os comandos básicos, como `git clone`, `git commit` e `git push`, além de explicar como usar o GitHub para hospedar seus repositórios."
+        }
+    ]
+}
