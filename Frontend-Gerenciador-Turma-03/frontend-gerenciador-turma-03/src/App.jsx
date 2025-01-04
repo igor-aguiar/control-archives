@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
+import FornecedorList from "./pages/Fornecedor/FornecedorList";
+import { BrowserRouter } from "react-router-dom";
 
 const App = () => {
   return (
-    <div></div>
-  )
-}
+    <div>
+      <BrowserRouter>
+        <FornecedorList />
+      </BrowserRouter>
+    </div>
+  );
+};
 
-export default App
+export default App;
