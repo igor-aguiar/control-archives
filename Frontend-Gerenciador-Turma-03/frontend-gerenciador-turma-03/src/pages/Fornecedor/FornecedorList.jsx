@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import {
   FaCheckCircle,
   FaEdit,
-  FaExclamationCircle,
   FaExclamationTriangle,
   FaPlus,
+  FaQuestionCircle,
   FaTrash,
 } from "react-icons/fa";
 import Modal from "react-modal";
@@ -16,6 +16,7 @@ const FornecedorList = () => {
   const [fornecedorSelecionado, setFornecedorSelecionado] = useState(null);
   const [modalAberto, setModalAberto] = useState(false);
   const [modalSucessoAberto, setModalSucessoAberto] = useState(false);
+  const [tooltipAberto, setTooltipAberto] = useState(false)
 
   useEffect(() => {
     axios
@@ -49,10 +50,23 @@ const FornecedorList = () => {
     setTimeout(() => setModalSucessoAberto(false), 2000)
   }
 
+  const toggleTooltip = () => {
+    setTooltipAberto(!tooltipAberto)
+  }
+
   return (
     <div className="container mt-5">
       <h2 className="mb-4" style={{ position: "relative" }}>
         Lista de Fornecedores
+        <FaQuestionCircle 
+          className="tooltip-icon"
+          onClick={toggleTooltip}
+        />
+        {
+          tooltipAberto && (<div className="tooltip">
+            Aqui você pode ver, editar ou excluir fornecedores cadastrados no sistema.
+          </div>)
+        }
       </h2>
 
       <Link to="/add-fornecedores" className="btn btn-primary mb-2">

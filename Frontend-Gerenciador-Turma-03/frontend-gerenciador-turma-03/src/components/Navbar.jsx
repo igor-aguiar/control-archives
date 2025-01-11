@@ -1,9 +1,72 @@
-import React from 'react'
+import React from "react";
+import { useState } from "react";
+import { FaUserCircle } from "react-icons/fa";
+import { useLocation, Routes } from "react-router-dom";
+import { Link } from "react-router";
 
 const Navbar = () => {
-  return (
-    <div>Navbar</div>
-  )
-}
+  const [dropDownAberto, setDropDownAberto] = useState(false);
+  const location = useLocation();
 
-export default Navbar
+  const isActive = (path) => {
+    return location.pathname === path ? "active" : "";
+  };
+
+  const toggleDropdown = () => {
+    setDropDownAberto(true);
+  };
+
+  return (
+    <nav className="menu">
+      <div className="logo-container">
+        <Link to="/">
+          <img
+            src="/PRODUCT-manager-logo.png"
+            alt="Logo do sistema"
+            className="logo-img"
+          />
+        </Link>
+      </div>
+      <div className="menu-links">
+        <Link to="/" className={isActive("/")}>
+          Inicial
+        </Link>
+        <Link to="/add-fornecedores" className={isActive("/add-fornecedores")}>
+          Adicionar Fornecedor
+        </Link>
+        <Link
+          to="/listar-fornecedores"
+          className={isActive("/listar-fornecedores")}
+        >
+          Listar Fornecedores
+        </Link>
+        <Link to="/add-produtos" className={isActive("/add-produtos")}>
+          Adicionar Produto
+        </Link>
+        <Link to="/listar-produtos" className={isActive("/listar-produtos")}>
+          Listar Produtos
+        </Link>
+        <Link to="/add-clientes" className={isActive("/add-clientes")}>
+          Adicionar Cliente
+        </Link>
+        <Link to="/listar-clientes" className={isActive("/listar-clientes")}>
+          Listar Clientes
+        </Link>
+      </div>
+      <div className="avatar-container">
+        <div className="avatar-info" onClick={toggleDropdown}>
+          <FaUserCircle className="avatar-icon" />
+          <span className="logged-user-email">usuario-logado@gmail.com</span>
+        </div>
+      </div>
+      {dropDownAberto && (
+        <div className="dropdown-menu">
+          <Link to="/alterar-senha">Alterar Senha</Link>
+          <Link to="/logout">sair</Link>
+        </div>
+      )}
+    </nav>
+  );
+};
+
+export default Navbar;
